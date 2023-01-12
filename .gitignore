@@ -95,11 +95,8 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/c++,windows,macos
-/.vscode
-/build/Debug
-/.vscode/tasks.json
 *.exe
 *.ilk
 *.pdb
 *.obj
-/build
+/.vscode/c_cpp_properties.json
