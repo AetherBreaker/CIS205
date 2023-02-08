@@ -6,7 +6,12 @@
 class Foo {
     private:
     int x;
+    public:
     Foo(int x): x(x) {}
+
+    int getX() {
+        return x;
+    }
 
     void setX(int x) {
         this->x = x;
