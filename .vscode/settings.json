@@ -67,6 +67,7 @@
         "xutility": "cpp",
         "codecvt": "cpp",
         "deque": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "filesystem": "cpp"
     }
 }

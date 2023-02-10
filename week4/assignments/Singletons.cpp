@@ -11,6 +11,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <filesystem>
 
 
 using std::cout;
@@ -20,32 +21,60 @@ using std::fstream;
 
 class Log {
     private:
-    static Log *instance;
-    Log() {};
-    Log(const Log &copy) = delete;
-    Log &operator=(const Log &copy) = delete;
+    std::filesystem::path log_path;
+    Log() {
+        load_config();
+    };
+
+    // load log path from config file
+    // if config file does not exist, create it with default path
+    void load_config(const string config_file = std::filesystem::current_path().string() + "/config.txt") {
+        cout << "111" + std::filesystem::current_path().string() << endl;
+        std::filesystem::path path(config_file);
+        fstream config(path);
+        if (!config.is_open()) {
+            config.open(path, std::ios::out);
+            config << std::filesystem::current_path().string() + "log.txt";
+            config.close();
+        }
+        else {
+            config >> log_path;
+            config.close();
+        }
+
+    }
 
     public:
-    static Log *getInstance() {
-        if (instance == nullptr) {
-            instance = new Log();
-        }
+    Log(const Log &copy) = delete;
+    Log &operator=(const Log &copy) = delete;
+    static Log &getInstance() {
+        static Log instance;
         return instance;
     }
 
     void log(string message) {
+        // debug output
+        cout << "Logging message:\n";
+        cout << message << endl;
+
+        // write to file
         fstream file("log.txt", std::ios::app);
         file << message << endl;
         file.close();
     }
 };
 
+
+
+
 int main(int argc, char *argv[]) {
-    Log *log;
-    log->log("This is a test message");
-    log->log("This is a test message");
-    log->log("This is a test message");
-    log->log("This is a test message");
+    Log &log = Log::getInstance();
+
+    cout << "Logging messages..." << endl;
+    log.log("messages");
+    log.log("messages");
+    log.log("messages");
+    log.log("messages");
 
     return 0;
 }
