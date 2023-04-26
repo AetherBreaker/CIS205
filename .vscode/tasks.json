@@ -5,6 +5,7 @@
             "label": "C/C++: cl.exe build active file",
             "command": "cl.exe",
             "args": [
+                "/I \"${workspaceFolder}\\IncludeFiles\"",
                 "/Zi",
                 "/EHsc",
                 "/nologo",
@@ -15,7 +16,8 @@
                 "/Fd:",
                 "BuildFiles\\",
                 "${file}",
-                "/std:c++latest"
+                "/std:c++latest",
+                "/showincludes"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"

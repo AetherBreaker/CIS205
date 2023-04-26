@@ -68,6 +68,10 @@
         "codecvt": "cpp",
         "deque": "cpp",
         "list": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "bitset": "cpp",
+        "cstdarg": "cpp",
+        "set": "cpp",
+        "regex": "cpp"
     }
 }

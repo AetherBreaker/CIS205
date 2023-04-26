@@ -28,13 +28,13 @@ class Log {
 
     // load log path from config file
     // if config file does not exist, create it with default path
-    void load_config(const string config_file = std::filesystem::current_path().string() + "/config.txt") {
+    void load_config(const string config_file = std::filesystem::current_path().string() + "\\config.txt") {
         cout << "111" + std::filesystem::current_path().string() << endl;
         std::filesystem::path path(config_file);
         fstream config(path);
         if (!config.is_open()) {
             config.open(path, std::ios::out);
-            config << std::filesystem::current_path().string() + "log.txt";
+            config << std::filesystem::current_path().string() + "\\log.txt";
             config.close();
         }
         else {
